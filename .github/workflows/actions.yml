@@ -1,0 +1,15 @@
+name: "Running Actions"
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy-code:
+    runs-on: ubuntu-latest
+    steps:
+      run: echo "Pulling source code"
+      run: echo "Running Migrations"
+      run: echo "Generating build dir"
+      run: echo "Publish Version"
+  # send-notification:

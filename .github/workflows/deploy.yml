@@ -1,6 +1,8 @@
 name: Deploy to server
 
-on: push
+on:
+  push:
+    branches: ["main"]
 
 jobs:
   first_job:
@@ -9,3 +11,10 @@ jobs:
     steps:
       - name: Hello World
         run:  echo "Hello World!"
+
+  second_job:
+    runs_on: ubuntu-latest
+
+    steps:
+      - name: Second Job
+        run:  echo "Second Job!"

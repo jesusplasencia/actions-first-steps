@@ -13,7 +13,7 @@ jobs:
         run:  echo "Hello World!"
 
   second_job:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Second Job

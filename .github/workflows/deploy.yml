@@ -21,12 +21,3 @@ jobs:
     steps:
       - name: Output Debug
         run: echo "Output from first_job: ${{ needs.first_job.outputs.getaway }}"
-  # third_job:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Working dir
-  #       id: stepo-3
-  #       run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
-  #
-  #     - name: Getting Var
-  #       run: echo "${{ steps.stepo-3.outputs.my_variable }}"

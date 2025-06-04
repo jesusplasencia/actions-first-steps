@@ -14,8 +14,8 @@ jobs:
         run:  echo "Hello from $NAME"
 
   second_job:
-    # if: ${{ github.ref == 'refs/heads/main' }} -> context
-    needs: first_job
+    if: ${{ jobs.first_job.result == 'success' }}
+    # needs: first_job
     runs-on: ubuntu-latest
     steps:
       - name: Second Job

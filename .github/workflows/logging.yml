@@ -1,0 +1,27 @@
+name: Logging Example with Artifact
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-and-log:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run command and log output
+        run: |
+          echo "Starting log..." > output.log
+          echo "Date: $(date)" >> output.log
+          echo "List of files:" >> output.log
+          ls -la >> output.log
+          echo "Done logging."
+
+      - name: Upload log as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-logs
+          path: output.log

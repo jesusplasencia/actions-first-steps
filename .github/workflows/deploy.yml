@@ -10,8 +10,12 @@ jobs:
     env:
       NAME: "1492"
     steps:
-      - name: First Job
-        run:  echo "Hello from $NAME"
+      - name: Working dir
+        run:  ls -al
+      - name: Action
+        run:  actions/checkout@v4
+      - name: Working after action
+        run:  ls -al
 
   second_job:
     needs: first_job

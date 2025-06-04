@@ -14,9 +14,9 @@ jobs:
         run:  echo "Hello from $NAME"
 
   second_job:
-    if: ${{ jobs.first_job.result == 'success' }}
-    # needs: first_job
+    needs: first_job
+    if: ${{ needs.first_job.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Second Job
-        run:  echo "Second Jobber..."
+        run:  echo "First Job succeseded, hence, you have Second Job."

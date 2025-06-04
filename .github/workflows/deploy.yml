@@ -7,17 +7,9 @@ on:
 jobs:
   first_job:
     runs-on: ubuntu-latest
-    env:
-      NAME: "1492"
     outputs:
       getaway: ${{ steps.getaway-step.outputs.my_output }}
     steps:
-      - name: Working dir
-        run: ls -al
-      - name: Action
-        uses: actions/checkout@v4
-      - name: Working after action
-        run: ls -al
       - name: Set Output
         id: getaway-step
         run: echo "my_output=Getaway Active" >> $GITHUB_OUTPUT
@@ -27,11 +19,8 @@ jobs:
     if: ${{ needs.first_job.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Second Job
-        run: echo "First Job succeeded, hence, you have Second Job."
-      - name: Obtaining Data from outputs
+      - name: Output Debug
         run: echo "Output from first_job: ${{ needs.first_job.outputs.getaway }}"
-
   # third_job:
   #   runs-on: ubuntu-latest
   #   steps:

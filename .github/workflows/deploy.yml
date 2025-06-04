@@ -14,16 +14,13 @@ jobs:
     steps:
       - name: Working dir
         run: ls -al
-
       - name: Action
         uses: actions/checkout@v4
-
       - name: Working after action
         run: ls -al
-
       - name: Set Output
         id: getaway-step
-        run: echo "my_output=🚀 Getaway Active" >> $GITHUB_OUTPUT
+        run: echo "my_output=Getaway Active" >> $GITHUB_OUTPUT
 
   second_job:
     needs: first_job
@@ -32,16 +29,15 @@ jobs:
     steps:
       - name: Second Job
         run: echo "First Job succeeded, hence, you have Second Job."
-
       - name: Obtaining Data from outputs
         run: echo "Output from first_job: ${{ needs.first_job.outputs.getaway }}"
 
-  third_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Working dir
-        id: stepo-3
-        run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
-
-      - name: Getting Var
-        run: echo "${{ steps.stepo-3.outputs.my_variable }}"
+  # third_job:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Working dir
+  #       id: stepo-3
+  #       run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
+  #
+  #     - name: Getting Var
+  #       run: echo "${{ steps.stepo-3.outputs.my_variable }}"

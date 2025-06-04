@@ -13,7 +13,7 @@ jobs:
       - name: Working dir
         run:  ls -al
       - name: Action
-        run:  actions/checkout@v4
+        uses:  actions/checkout@v4
       - name: Working after action
         run:  ls -al
 

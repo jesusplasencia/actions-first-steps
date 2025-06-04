@@ -7,11 +7,14 @@ on:
 jobs:
   first_job:
     runs-on: ubuntu-latest
+    env:
+      NAME: "1492"
     steps:
       - name: First Job
-        run:  echo "Hello from first jobby..."
+        run:  echo "Hello from $NAME"
 
   second_job:
+    # if: ${{ github.ref == 'refs/heads/main' }} -> context
     needs: first_job
     runs-on: ubuntu-latest
     steps:
